@@ -5,15 +5,18 @@
   "scripts": {
     "lint": "eslint .",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "assert": "^2.1.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.9.7",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "test": "^3.3.0"
   }
 }
