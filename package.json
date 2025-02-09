@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "dev": "nodemon index.js",
-    "test": "node --test"
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "test": "NODE_ENV=test node --test",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -15,8 +16,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jest": "^29.7.0",
     "mongoose": "^8.9.7",
     "nodemon": "^3.1.9",
+    "supertest": "^7.0.0",
     "test": "^3.3.0"
   }
 }

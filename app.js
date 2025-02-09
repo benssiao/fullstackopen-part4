@@ -15,6 +15,7 @@ mongoose.connect(config.MONGODB_URI)
     logger.info('connected to MongoDB')
   })
   .catch((error) => {
+    console.log(error);
     logger.error('error connecting to MongoDB:', error.message)
   })
 
@@ -23,7 +24,7 @@ app.use(express.static('dist'))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
-app.use("/api", blogsRouter);
+app.use("/api/blogs", blogsRouter);
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
