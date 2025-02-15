@@ -1,4 +1,6 @@
 const Blog = require("../models/blog");
+const User = require("../models/user");
+
 
 const initialBlogs = [
     {
@@ -20,12 +22,42 @@ const initialBlogs = [
    
     }]
 
+
+
+async function nonExistantBlog() {
+  const toBeRemoved = new Blog({
+    title: "remove me",
+  })
+  const savedToDb = await toBeRemoved.save();
+  await savedToDb.deleteOne();
+  return  savedToDb._id.toString();
+}
+
+async function nonExistantUser() {
+  
+  const toBeRemoved = new User({
+    username: "remove me",
+  })
+  const savedToDb = await toBeRemoved.save();
+  await savedToDb.deleteOne();
+  return  savedToDb._id.toString();
+}
+
+
 async function blogsInDb() {
     const blogs = await Blog.find({});
     return blogs.map(blog => blog.toJSON());
 }
 
+async function usersInDb() {
+  const users = await User.find({});
+  return users.map(user => user.toJSON())
+}
+
 module.exports = {
     blogsInDb,
     initialBlogs,
+    usersInDb,
+    nonExistantBlog,
+    nonExistantUser,
 }
