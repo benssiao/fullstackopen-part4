@@ -31,6 +31,7 @@ blogsRouter.post('/', middleware.tokenExtractor
                 error: 'title or url missing' 
             })
         }
+
         const blogOwnerId = request.user.id;
         const blogOwner = await User.findById(blogOwnerId);
         const blog = new Blog({
@@ -38,7 +39,7 @@ blogsRouter.post('/', middleware.tokenExtractor
             author: body.author,
             likes: body.likes,
             url: body.url,
-            user: blogOwnerId
+            userID: blogOwnerId
         });
         const result = await blog.save();
         blogOwner.blogs = blogOwner.blogs.concat(result._id);

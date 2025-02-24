@@ -8,8 +8,6 @@ const usersRouter = express.Router();
 function checkValidSignup(username, password) {
     return username.length >= 3 && password.length >= 3;
 }
-
-
 usersRouter.get("/", async (req, res, next) => {
     try {
         const users = await User.find({}).populate("blogs", {title: 1, author: 1, url: 1});
@@ -22,6 +20,7 @@ usersRouter.get("/", async (req, res, next) => {
 usersRouter.post("/", async (req, res, next) => {
     try {
         const {username, name, password} = req.body;
+        console.log(username, password);
         if (!checkValidSignup(username, password)) {
             return res.status(400).json({
                 error: "Username or password invalid. Username and password must be at least 3 characters"
