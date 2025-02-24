@@ -39,7 +39,7 @@ blogsRouter.post('/', middleware.tokenExtractor
             author: body.author,
             likes: body.likes,
             url: body.url,
-            userID: blogOwnerId
+            user: blogOwnerId
         });
         const result = await blog.save();
         blogOwner.blogs = blogOwner.blogs.concat(result._id);
